@@ -16,18 +16,18 @@ def main():
     # テキトー
     icon_d = {
         '01': ':sunny:',
-        '02': ':mostly_sunny:',
-        '03': ':partly_sunny:',
-        '04': ':barely_sunny:',
-        '05': ':partly_sunny_lain:',
-        '06': ':cloud:',
-        '07': ':rain_cloud:',
-        '08': ':thunder_cloud_and_rain:',
-        '09': ':lightning:',
         '10': ':umbrella_with_rain_drops:',
-        '11': ':umbrella:',
-        '12': ':umbrella:',
+        '15': ':umbrella:',
     }
+    #  ':mostly_sunny:',
+    #  ':partly_sunny:',
+    #  ':barely_sunny:',
+    #  ':partly_sunny_lain:',
+    #  ':cloud:',
+    #  ':rain_cloud:',
+    #  ':thunder_cloud_and_rain:',
+    #  ':lightning:',
+    #  ':umbrella:',
 
     soup_today = soup.find('section', 'today-weather')
 
