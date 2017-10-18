@@ -1,5 +1,6 @@
 # coding: utf-8
 from bs4 import BeautifulSoup
+from datetime import datetime
 import os
 import urllib.parse
 import urllib.request
@@ -31,16 +32,18 @@ def main():
     #  ':umbrella:',
 
     icon = soup_today.find('div', 'weather-icon').find('img')
-    icon_png = icon['src'].lstrip('https://static.tenki.jp/images/icon/forecast-days-weather/').rstrip('.png').rstrip('_n')
+    icon_png = icon['src'].split('/')[-1].rstrip('_n.png')
+    text = icon['title']
 
     if icon_png in icon_d:
         emoji = icon_d[icon_png]
     else:
         emoji = ':question:'
+        text = icon_png + text
 
-    text = icon['title']
     text = text + ' 最高' + soup_today.find('dd', 'high-temp').get_text() + soup_today.find('dd', 'high-temp tempdiff').string
     text = text + ' 最低' + soup_today.find('dd', 'low-temp').get_text() + soup_today.find('dd', 'low-temp tempdiff').string
+    text = text + ' 最終取得: ' + datetime.now().strftime("%H:%M:%S")
 
     params = urllib.parse.urlencode({
         'token': conf['token'],
