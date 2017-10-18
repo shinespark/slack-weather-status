@@ -16,7 +16,7 @@ def main():
     # テキトー
     icon_d = {
         '01': ':sunny:',
-        '10': ':umbrella_with_rain_drops:',
+        '10': ':rain_cloud:',
         '15': ':umbrella:',
     }
     #  ':mostly_sunny:',
