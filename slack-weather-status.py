@@ -10,8 +10,9 @@ def main():
     dirpath = os.path.abspath(os.path.dirname(__file__))
     conf = yaml.load(open(dirpath + '/conf.yml').read())
     url = conf['weather_url']
-    atom = urllib.request.urlopen(url).read().decode('utf-8')
-    soup = BeautifulSoup(atom, 'lxml')
+    html = urllib.request.urlopen(url).read().decode('utf-8')
+    soup = BeautifulSoup(html, 'lxml')
+    soup_today = soup.find('section', 'today-weather')
 
     # テキトー
     icon_d = {
@@ -28,8 +29,6 @@ def main():
     #  ':thunder_cloud_and_rain:',
     #  ':lightning:',
     #  ':umbrella:',
-
-    soup_today = soup.find('section', 'today-weather')
 
     icon = soup_today.find('div', 'weather-icon').find('img')
     icon_png = icon['src'].lstrip('https://static.tenki.jp/images/icon/forecast-days-weather/').rstrip('.png').rstrip('_n')
