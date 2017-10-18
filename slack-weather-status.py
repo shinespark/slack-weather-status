@@ -24,8 +24,9 @@ def main():
         '07': ':rain_cloud:',
         '08': ':thunder_cloud_and_rain:',
         '09': ':lightning:',
-        '10': ':umbrella:',
-        '11': ':umbrella_with_rain_drops:',
+        '10': ':umbrella_with_rain_drops:',
+        '11': ':umbrella:',
+        '12': ':umbrella:',
     }
 
     soup_today = soup.find('section', 'today-weather')
@@ -35,12 +36,11 @@ def main():
 
     if icon_png in icon_d:
         emoji = icon_d[icon_png]
-        text = ''
     else:
         emoji = ':question:'
-        text = icon['title'] + ' '
 
-    text = text + '最高' + soup_today.find('dd', 'high-temp').get_text() + soup_today.find('dd', 'high-temp tempdiff').string
+    text = icon['title']
+    text = text + ' 最高' + soup_today.find('dd', 'high-temp').get_text() + soup_today.find('dd', 'high-temp tempdiff').string
     text = text + ' 最低' + soup_today.find('dd', 'low-temp').get_text() + soup_today.find('dd', 'low-temp tempdiff').string
 
     params = urllib.parse.urlencode({
