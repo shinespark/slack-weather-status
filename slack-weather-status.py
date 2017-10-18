@@ -53,7 +53,7 @@ def main():
     params = params.encode('ascii')
     slack_url = 'https://slack.com/api/users.profile.set'
     req = urllib.request.Request(slack_url, params, {'Content-type': 'application/x-www-form-urlencoded'})
-    urllib.urlopen(req)
+    urllib.request.urlopen(req)
 
 
 if __name__ == "__main__":
