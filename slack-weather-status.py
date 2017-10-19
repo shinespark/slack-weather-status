@@ -43,7 +43,7 @@ def main():
 
     text = text + ' 最高: ' + soup_today.find('dd', 'high-temp').get_text() + soup_today.find('dd', 'high-temp tempdiff').string
     text = text + ' 最低: ' + soup_today.find('dd', 'low-temp').get_text() + soup_today.find('dd', 'low-temp tempdiff').string
-    text = text + ' 🕒: ' + datetime.now().strftime("%H:%M")
+    text = text + ' ' + datetime.now().strftime("%H:%M") + ' 更新'
 
     params = urllib.parse.urlencode({
         'token': conf['token'],
