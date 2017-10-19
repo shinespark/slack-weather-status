@@ -41,9 +41,9 @@ def main():
         emoji = ':question:'
         text = icon_png + text
 
-    text = text + ' 最高: ' + soup_today.find('dd', 'high-temp').get_text() + soup_today.find('dd', 'high-temp tempdiff').string
-    text = text + ' 最低: ' + soup_today.find('dd', 'low-temp').get_text() + soup_today.find('dd', 'low-temp tempdiff').string
-    text = text + ' 取得: ' + datetime.now().strftime("%H:%M")
+    text = text + ' ⬆️ ' + soup_today.find('dd', 'high-temp').get_text() + soup_today.find('dd', 'high-temp tempdiff').string
+    text = text + ' ⬇️ ' + soup_today.find('dd', 'low-temp').get_text() + soup_today.find('dd', 'low-temp tempdiff').string
+    text = text + ' 🕒 ' + datetime.now().strftime("%H:%M")
 
     params = urllib.parse.urlencode({
         'token': conf['token'],
