@@ -20,6 +20,7 @@ def main():
         '01': ':sunny:',
         '10': ':rain_cloud:',
         '15': ':umbrella:',
+        '20': ':rain_cloud:',
     }
     #  ':mostly_sunny:',
     #  ':partly_sunny:',
