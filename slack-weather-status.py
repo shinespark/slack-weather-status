@@ -39,7 +39,7 @@ def main():
         '20': ':rain_cloud:',
         '21': ':rain_cloud:',
         '22': ':rain_cloud:',
-        '23': ':umbrella_with_rain_drops:',
+        '23': ':snowman_without_snow:',
         '24': ':snowman_without_snow:',
         '25': ':snowman_without_snow:',
         '26': ':snowman_without_snow:',
@@ -59,9 +59,33 @@ def main():
         emoji = ':question:'
         text = icon_png + text
 
-    text = text + ' 最高: ' + soup_today.find('dd', 'high-temp').get_text() + soup_today.find('dd', 'high-temp tempdiff').string
-    text = text + ' 最低: ' + soup_today.find('dd', 'low-temp').get_text() + soup_today.find('dd', 'low-temp tempdiff').string
+    #  text = text + ' 最高: ' + soup_today.find('dd', 'high-temp').get_text() + soup_today.find('dd', 'high-temp tempdiff').string
+    #  text = text + ' 最低: ' + soup_today.find('dd', 'low-temp').get_text() + soup_today.find('dd', 'low-temp tempdiff').string
+    req = urllib.request.Request(
+        'https://www.coingecko.com/en/price_charts/monacoin/jpy',
+        data=None,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
+        }
+    )
+
+    mona_html = urllib.request.urlopen(req).read().decode('utf-8')
+    mona_soup = BeautifulSoup(mona_html, 'lxml')
+    text = text + ', MONA: ' + mona_soup.select('.coin-value > .currency-exchangable')[0].get_text().strip() + ' ' + mona_soup.select('.live-percent-change > .stat-percent-lg')[0].get_text().strip()
+
+    req = urllib.request.Request(
+        'https://www.coingecko.com/en/price_charts/bitzeny/jpy',
+        data=None,
+        headers={
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
+        }
+    )
+    bzy_html = urllib.request.urlopen(req).read().decode('utf-8')
+    bzy_soup = BeautifulSoup(bzy_html, 'lxml')
+    text = text + ', ZNY: ' + bzy_soup.select('.coin-value > .currency-exchangable')[0].get_text().strip() + ' ' + bzy_soup.select('.live-percent-change > .stat-percent-lg')[0].get_text().strip()
+
     text = text + ' 取得: ' + datetime.now().strftime("%H:%M")
+
 
     params = urllib.parse.urlencode({
         'token': conf['token'],
