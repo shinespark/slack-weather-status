@@ -39,7 +39,7 @@ def main():
         '20': ':rain_cloud:',
         '21': ':rain_cloud:',
         '22': ':rain_cloud:',
-        '23': ':umbrella_with_rain_drops:',
+        '23': ':snowman_without_snow:',
         '24': ':snowman_without_snow:',
         '25': ':snowman_without_snow:',
         '26': ':snowman_without_snow:',
