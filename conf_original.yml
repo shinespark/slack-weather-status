@@ -1,2 +1,4 @@
 weather_url: 'https://tenki.jp/forecast/3/16/4410/13109'
 token: 'xoxp-xxxxxxxxxx-xxxxxxxxxx-xxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+no_smoking:
+  started_at: '2018/06/29'
