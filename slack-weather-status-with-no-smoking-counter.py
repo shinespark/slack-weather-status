@@ -66,7 +66,6 @@ def main():
         no_smoking_days = (now - datetime.datetime.strptime(conf['no_smoking']['started_at'], '%Y/%m/%d')).days
         text += ', :no_smoking:: ' + str(no_smoking_days) + '日目'
     text += ', 取得: ' + now.strftime("%H:%M")
-    print(text)
 
     params = urllib.parse.urlencode({
         'token': conf['token'],
@@ -78,8 +77,7 @@ def main():
     params = params.encode('ascii')
     slack_url = 'https://slack.com/api/users.profile.set'
     req = urllib.request.Request(slack_url, params, {'Content-type': 'application/x-www-form-urlencoded'})
-    res = urllib.request.urlopen(req)
-    print(res.status)
+    urllib.request.urlopen(req)
 
 
 if __name__ == "__main__":
