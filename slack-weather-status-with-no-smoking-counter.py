@@ -64,7 +64,7 @@ def main():
     text += ' 〜 {}{}'.format(soup_today.find('dd', 'high-temp').get_text(), soup_today.find('dd', 'high-temp tempdiff').string)
     if 'no_smoking' in conf:
         no_smoking_days = (now - datetime.datetime.strptime(conf['no_smoking']['started_at'], '%Y/%m/%d')).days
-        text = ', :no_smoking:: {}日目, {}本, {}円'.format(no_smoking_days, no_smoking_days * 20, no_smoking_days * 460) + text
+        text = ', :no_smoking:: {}日目, {:,}本, {:,}円'.format(no_smoking_days, no_smoking_days * 20, no_smoking_days * 460) + text
     text += ', 取得: {}'.format(now.strftime("%H:%M"))
 
     params = urllib.parse.urlencode({
