@@ -1,5 +1,8 @@
 # slack-weather-status
 
+Deprecated.
+See: [shinespark/go\-slack\-weather\-status](https://github.com/shinespark/go-slack-weather-status)
+
 # Usage
 
 ```
